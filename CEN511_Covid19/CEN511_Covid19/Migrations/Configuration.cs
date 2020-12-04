@@ -9,8 +9,7 @@ namespace CEN511_Covid19.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(CEN511_Covid19.Models.ApplicationDbContext context)

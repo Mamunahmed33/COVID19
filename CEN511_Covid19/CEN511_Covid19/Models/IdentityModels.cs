@@ -11,23 +11,12 @@ namespace CEN511_Covid19.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public int ID { get; set; }
-        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public string Address { get; set; }
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
         public DateTime DateofBirth { get; set; }
-        public bool UserType { get; set; }
-        [Required(ErrorMessage = "You must provide a phone number")]
-        [Display(Name = "Phone Number")]
-        [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public int UserType { get; set; }  
         public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -60,5 +49,7 @@ namespace CEN511_Covid19.Models
         public System.Data.Entity.DbSet<CEN511_Covid19.Models.Feedback> Feedbacks { get; set; }
 
         public System.Data.Entity.DbSet<CEN511_Covid19.Models.Suspected> Suspecteds { get; set; }
+
+        //public System.Data.Entity.DbSet<CEN511_Covid19.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

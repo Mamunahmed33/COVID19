@@ -21,6 +21,6 @@ namespace CEN511_Covid19.Models
         [Display(Name = "Are you recovered from COVID-19?")]
         public bool RecoveryStatus { get; set; }
 
-        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

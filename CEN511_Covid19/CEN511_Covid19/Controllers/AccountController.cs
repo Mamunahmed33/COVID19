@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CEN511_Covid19.Models;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace CEN511_Covid19.Controllers
 {
@@ -67,6 +68,7 @@ namespace CEN511_Covid19.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -81,6 +83,19 @@ namespace CEN511_Covid19.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindByEmailAsync(model.Email);
+                    string id = user.Id.ToString();
+                    string role = UserManager.GetRoles(id).FirstOrDefault();
+                    
+                    if (role.Equals("Doctor")) {
+                        return View("Doctors");
+                    }
+                    else if (role.Equals("Registered")) { 
+                    }
+                    else if (role.Equals("Admin")) { 
+                    
+                    }
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -158,22 +173,21 @@ namespace CEN511_Covid19.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var user = new ApplicationUser {
-                    ID = 1,
-                    UserName = "mamun", 
-                    Email = "a@a.com",
-                    FirstName = "Mamun",
-                    LastName = "Ahmed",
-                    Address = "Dhaka",
-                    UserType = false,
-                    PhoneNumber = "7863405261",
-                    DateofBirth = new DateTime (DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 1, 4)
-
+                    Email = model.Email,
+                    UserName = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Address = model.Address,
+                    UserType = 2,
+                    PhoneNumber = model.PhoneNumber,
+                    DateofBirth = model.DateofBirth
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var newuser = await UserManager.FindByEmailAsync(user.Email);
+                    UserManager.AddToRole(newuser.Id, "Registered");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -421,6 +435,29 @@ namespace CEN511_Covid19.Controllers
         {
             return View();
         }
+
+        public ActionResult DoctorsChoice(int? choice)        
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            if (choice == 1) {
+                var recoveredpatients = db.HealthStatus.Where(x => x.RecoveryStatus == true).ToList();
+
+                return View("RecoveredPatients", recoveredpatients.ToList());
+            }
+            else if (choice == 2)
+            {
+                var symptomspatients = db.HealthStatus.Where(x => x.SuggestedForTest == false).ToList();
+
+                return View("SymptomsProvider", symptomspatients.ToList());
+            }
+            else if (choice == 3) {
+                var resultVerify = db.HealthStatus.Where(x => x.VerificationStatus == false && x.ResultStatus == true).ToList();
+
+                return View("VerifyResults", resultVerify.ToList());
+            }
+
+            return View();
+        } 
 
         #region Helpers
         // Used for XSRF protection when adding external logins

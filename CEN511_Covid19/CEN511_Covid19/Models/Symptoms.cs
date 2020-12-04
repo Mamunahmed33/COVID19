@@ -20,7 +20,7 @@ namespace CEN511_Covid19.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartingDayOfSymptoms { get; set; }
-        public virtual ICollection<RegisterViewModel> RegisterViewModel { get; set; }
+        public virtual RegisterViewModel User{ get; set; }
 
 
     }
