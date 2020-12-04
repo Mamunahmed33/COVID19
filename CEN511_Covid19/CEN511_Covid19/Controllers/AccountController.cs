@@ -90,10 +90,11 @@ namespace CEN511_Covid19.Controllers
                     if (role.Equals("Doctor")) {
                         return View("Doctors");
                     }
-                    else if (role.Equals("Registered")) { 
+                    else if (role.Equals("Registered")) {
+                        return RedirectToAction("Index", "Symptoms");
                     }
-                    else if (role.Equals("Admin")) { 
-                    
+                    else if (role.Equals("Admin")) {
+                        return View("AllUser");
                     }
 
                     return RedirectToLocal(returnUrl);

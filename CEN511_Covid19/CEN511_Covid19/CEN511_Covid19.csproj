@@ -174,9 +174,9 @@
     <Compile Include="Migrations\202012040610365_init.Designer.cs">
       <DependentUpon>202012040610365_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012041512028_2.cs" />
-    <Compile Include="Migrations\202012041512028_2.Designer.cs">
-      <DependentUpon>202012041512028_2.cs</DependentUpon>
+    <Compile Include="Migrations\202012042113391_5.cs" />
+    <Compile Include="Migrations\202012042113391_5.Designer.cs">
+      <DependentUpon>202012042113391_5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -284,6 +284,7 @@
     <Content Include="Views\Account\RecoveredPatients.cshtml" />
     <Content Include="Views\Account\SymptomsProvider.cshtml" />
     <Content Include="Views\Account\VerifyResults.cshtml" />
+    <Content Include="Views\Account\AllUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,8 +300,8 @@
     <EmbeddedResource Include="Migrations\202012040610365_init.resx">
       <DependentUpon>202012040610365_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041512028_2.resx">
-      <DependentUpon>202012041512028_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012042113391_5.resx">
+      <DependentUpon>202012042113391_5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,7 @@ namespace CEN511_Covid19.Models
 
         [Display(Name = "Are you recovered from COVID-19?")]
         public bool RecoveryStatus { get; set; }
-
-        public virtual ApplicationUser User { get; set; }
+        //[ForeignKey("User")]
+        public string User { get; set; }
     }
 }

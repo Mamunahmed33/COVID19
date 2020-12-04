@@ -7,12 +7,41 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CEN511_Covid19.Models;
+using Microsoft.AspNet.Identity;
+using System.Web.Security;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace CEN511_Covid19.Controllers
 {
     public class SymptomsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+       private ApplicationUserManager _userManager;
+
+        public SymptomsController()
+        {
+        }
+
+        public SymptomsController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: Symptoms
         public ActionResult Index()
@@ -46,10 +75,13 @@ namespace CEN511_Covid19.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SymptomsID,Fever,Cough,ShortnessOfBreathe,Aches,Headache,Ingigestion,StartingDayOfSymptoms")] Symptoms symptoms)
+        public async Task<ActionResult> Create([Bind(Include = "SymptomsID,Fever,Cough,ShortnessOfBreathe,Aches,Headache,Ingigestion,StartingDayOfSymptoms")] Symptoms symptoms)
         {
             if (ModelState.IsValid)
             {
+                string userID = User.Identity.GetUserId();
+              //  var u = db.Users.AsNoTracking().FirstOrDefault(user => user.Id == userID);
+                symptoms.UserID = userID;
                 db.Symptoms.Add(symptoms);
                 db.SaveChanges();
                 return RedirectToAction("Index");

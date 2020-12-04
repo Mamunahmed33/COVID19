@@ -50,6 +50,8 @@ namespace CEN511_Covid19.Models
 
         public System.Data.Entity.DbSet<CEN511_Covid19.Models.Suspected> Suspecteds { get; set; }
 
+       // public System.Data.Entity.DbSet<CEN511_Covid19.Models.ApplicationUser> ApplicationUsers { get; set; }
+
         //public System.Data.Entity.DbSet<CEN511_Covid19.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
