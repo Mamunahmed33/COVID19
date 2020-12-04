@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CEN511_Covid19.Models
@@ -64,6 +65,24 @@ namespace CEN511_Covid19.Models
 
     public class RegisterViewModel
     {
+        public int ID { get; set; }
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+        [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DateofBirth { get; set; }
+        public bool UserType { get; set; }
+        [Required(ErrorMessage = "You must provide a phone number")]
+        [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public string PhoneNumber { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

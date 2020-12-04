@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CEN511_Covid19.Models;
+using System.Diagnostics;
 
 namespace CEN511_Covid19.Controllers
 {
@@ -70,6 +71,9 @@ namespace CEN511_Covid19.Controllers
             {
                 return View(model);
             }
+
+            Debug.WriteLine(returnUrl);
+
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -154,7 +158,19 @@ namespace CEN511_Covid19.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                var user = new ApplicationUser {
+                    ID = 1,
+                    UserName = "mamun", 
+                    Email = "a@a.com",
+                    FirstName = "Mamun",
+                    LastName = "Ahmed",
+                    Address = "Dhaka",
+                    UserType = false,
+                    PhoneNumber = "7863405261",
+                    DateofBirth = new DateTime (DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 1, 4)
+
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

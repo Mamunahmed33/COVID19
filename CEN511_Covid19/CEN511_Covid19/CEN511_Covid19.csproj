@@ -159,18 +159,35 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CountryStatusController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
+    <Compile Include="Controllers\HealthStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SuspectedsController.cs" />
+    <Compile Include="Controllers\SymptomsController.cs" />
+    <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CountryStatus.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\HealthStatus.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Suspected.cs" />
+    <Compile Include="Models\Symptoms.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -229,10 +246,38 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Symptoms\Create.cshtml" />
+    <Content Include="Views\Symptoms\Delete.cshtml" />
+    <Content Include="Views\Symptoms\Details.cshtml" />
+    <Content Include="Views\Symptoms\Edit.cshtml" />
+    <Content Include="Views\Symptoms\Index.cshtml" />
+    <Content Include="Views\HealthStatus\Create.cshtml" />
+    <Content Include="Views\HealthStatus\Delete.cshtml" />
+    <Content Include="Views\HealthStatus\Details.cshtml" />
+    <Content Include="Views\HealthStatus\Edit.cshtml" />
+    <Content Include="Views\HealthStatus\Index.cshtml" />
+    <Content Include="Views\Zones\Create.cshtml" />
+    <Content Include="Views\Zones\Delete.cshtml" />
+    <Content Include="Views\Zones\Details.cshtml" />
+    <Content Include="Views\Zones\Edit.cshtml" />
+    <Content Include="Views\Zones\Index.cshtml" />
+    <Content Include="Views\CountryStatus\Create.cshtml" />
+    <Content Include="Views\CountryStatus\Delete.cshtml" />
+    <Content Include="Views\CountryStatus\Details.cshtml" />
+    <Content Include="Views\CountryStatus\Edit.cshtml" />
+    <Content Include="Views\CountryStatus\Index.cshtml" />
+    <Content Include="Views\Feedbacks\Create.cshtml" />
+    <Content Include="Views\Feedbacks\Delete.cshtml" />
+    <Content Include="Views\Feedbacks\Details.cshtml" />
+    <Content Include="Views\Feedbacks\Edit.cshtml" />
+    <Content Include="Views\Feedbacks\Index.cshtml" />
+    <Content Include="Views\Suspecteds\Create.cshtml" />
+    <Content Include="Views\Suspecteds\Delete.cshtml" />
+    <Content Include="Views\Suspecteds\Details.cshtml" />
+    <Content Include="Views\Suspecteds\Edit.cshtml" />
+    <Content Include="Views\Suspecteds\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CEN511_Covid19.Models.HealthStatus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SuggestedForTest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VerificationStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecoveryStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SuggestedForTest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VerificationStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecoveryStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HealthStatusID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HealthStatusID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HealthStatusID })
+        </td>
+    </tr>
+}
+
+</table>
