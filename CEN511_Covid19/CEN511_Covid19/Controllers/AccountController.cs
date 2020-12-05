@@ -91,6 +91,7 @@ namespace CEN511_Covid19.Controllers
                         return View("Doctors");
                     }
                     else if (role.Equals("Registered")) {
+
                         return RedirectToAction("Index", "Symptoms");
                     }
                     else if (role.Equals("Admin")) {
