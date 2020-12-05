@@ -17,6 +17,7 @@ namespace CEN511_Covid19.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationUserManager _userManager;
 
         public AccountController()
@@ -95,7 +96,8 @@ namespace CEN511_Covid19.Controllers
                         return RedirectToAction("Index", "Symptoms");
                     }
                     else if (role.Equals("Admin")) {
-                        return View("AllUser");
+                       
+                        return View("AllUser", getAll());
                     }
 
                     return RedirectToLocal(returnUrl);
@@ -109,6 +111,52 @@ namespace CEN511_Covid19.Controllers
                     return View(model);
             }
         }
+
+        public List<UserType> getAll() {
+            var users = db.Users.ToList();
+            List<UserType> userType = new List<UserType>();
+
+            foreach (var i in users)
+            {
+                string roleName = UserManager.GetRoles(i.Id).FirstOrDefault();
+                UserType s = new UserType
+                {
+                    UserID = i.Id,
+                    UserName = i.FirstName +" "+ i.LastName,
+                    UserAddress = i.Address,
+                    UserEmail = i.Email,
+                    RoleName = roleName
+                };
+                userType.Add(s);
+            }
+            return userType;
+        }
+
+        public ActionResult Delete(string id)
+        {
+            ApplicationUser user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return View("AllUser", getAll());
+        }
+
+        [HttpPost]
+        public ActionResult SetRoleforUser()
+        {
+            string v = Request.Form["dropdown"];
+            string i = Request.Form["item.UserID"];
+
+            if (!string.IsNullOrEmpty(v)) {
+                var oldUser = UserManager.FindById(i);
+                var oldRoleId = oldUser.Roles.SingleOrDefault().RoleId;
+                var oldRoleName = db.Roles.SingleOrDefault(r => r.Id == oldRoleId).Name;
+                UserManager.RemoveFromRole(i, oldRoleName);
+                UserManager.AddToRole(i, v);
+            }
+
+            return View("AllUser", getAll());
+        }
+
 
         //
         // GET: /Account/VerifyCode
@@ -197,8 +245,7 @@ namespace CEN511_Covid19.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Symptoms");
                 }
                 AddErrors(result);
             }
@@ -459,8 +506,9 @@ namespace CEN511_Covid19.Controllers
             }
 
             return View();
-        } 
+        }
 
+     
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
