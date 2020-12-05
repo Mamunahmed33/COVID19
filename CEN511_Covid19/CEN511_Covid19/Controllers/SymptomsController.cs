@@ -84,6 +84,7 @@ namespace CEN511_Covid19.Controllers
                 symptoms.UserID = userID;
                 db.Symptoms.Add(symptoms);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
