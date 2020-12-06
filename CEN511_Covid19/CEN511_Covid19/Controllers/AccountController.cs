@@ -89,6 +89,7 @@ namespace CEN511_Covid19.Controllers
                     string role = UserManager.GetRoles(id).FirstOrDefault();
                     
                     if (role.Equals("Doctor")) {
+
                         return View("Doctors");
                     }
                     else if (role.Equals("Registered")) {
@@ -487,7 +488,8 @@ namespace CEN511_Covid19.Controllers
 
         public ActionResult DoctorsChoice(int? choice)        
         {
-            ApplicationDbContext db = new ApplicationDbContext();
+            List<Symptoms> symptoms = db.Symptoms.ToList();
+            List<HealthStatus> healthStatus = db.HealthStatus.ToList();
             if (choice == 1) {
                 var recoveredpatients = db.HealthStatus.Where(x => x.RecoveryStatus == true).ToList();
 
