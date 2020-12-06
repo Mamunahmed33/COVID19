@@ -23,5 +23,17 @@ namespace CEN511_Covid19.Models
         public DateTime StartingDayOfSymptoms { get; set; }
         //[ForeignKey("User")]
         public string  UserID{ get; set; }
+
+        [Display(Name = "Suggested for Testing?")]
+        public bool SuggestedForTest { get; set; }
+
+        [Display(Name = "Please mark if testing result is positive.")]
+        public bool ResultStatus { get; set; }
+        [Display(Name = "Result Verified?")]
+        public bool VerificationStatus { get; set; }
+        public string PatientName { get; set; }
+
+        [Display(Name = "Are you recovered from COVID-19?")]
+        public bool RecoveryStatus { get; set; }
     }
 }

@@ -161,7 +161,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CountryStatusController.cs" />
     <Compile Include="Controllers\FeedbacksController.cs" />
-    <Compile Include="Controllers\HealthStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SuspectedsController.cs" />
@@ -174,16 +173,18 @@
     <Compile Include="Migrations\202012040610365_init.Designer.cs">
       <DependentUpon>202012040610365_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012042113391_5.cs" />
-    <Compile Include="Migrations\202012042113391_5.Designer.cs">
-      <DependentUpon>202012042113391_5.cs</DependentUpon>
+    <Compile Include="Migrations\202012060723596_5.cs" />
+    <Compile Include="Migrations\202012060723596_5.Designer.cs">
+      <DependentUpon>202012060723596_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012060724228_1.cs" />
+    <Compile Include="Migrations\202012060724228_1.Designer.cs">
+      <DependentUpon>202012060724228_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CountryStatus.cs" />
-    <Compile Include="Models\DoctorUserRelation.cs" />
     <Compile Include="Models\Feedback.cs" />
-    <Compile Include="Models\HealthStatus.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Suspected.cs" />
@@ -284,10 +285,14 @@
     <Content Include="Views\Suspecteds\Index.cshtml" />
     <Content Include="Views\Account\Doctors.cshtml" />
     <Content Include="Views\Account\RecoveredPatients.cshtml" />
-    <Content Include="Views\Account\SymptomsProvider.cshtml" />
     <Content Include="Views\Account\VerifyResults.cshtml" />
     <Content Include="Views\Account\AllUser.cshtml" />
     <Content Include="Views\Home\World.cshtml" />
+    <Content Include="Views\Account\SymptomsProvider.cshtml" />
+    <Content Include="Views\Symptoms\Suspected.cshtml" />
+    <Content Include="Views\Symptoms\SuspectedList.cshtml" />
+    <Content Include="Views\Symptoms\Feedback.cshtml" />
+    <Content Include="Views\Symptoms\FeedbackList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,8 +308,11 @@
     <EmbeddedResource Include="Migrations\202012040610365_init.resx">
       <DependentUpon>202012040610365_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012042113391_5.resx">
-      <DependentUpon>202012042113391_5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012060723596_5.resx">
+      <DependentUpon>202012060723596_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012060724228_1.resx">
+      <DependentUpon>202012060724228_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

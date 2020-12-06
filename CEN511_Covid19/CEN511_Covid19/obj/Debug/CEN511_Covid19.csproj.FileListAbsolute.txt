@@ -50,9 +50,9 @@ C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\bin\Microsoft.Owin.
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.csprojResolveAssemblyReference.cache
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.Migrations.init.resources
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.Migrations._5.resources
+C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.Migrations._1.resources
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.csproj.GenerateResource.Cache
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.dll
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.pdb

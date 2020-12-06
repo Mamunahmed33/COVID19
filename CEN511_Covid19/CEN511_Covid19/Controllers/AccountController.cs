@@ -346,8 +346,6 @@ namespace CEN511_Covid19.Controllers
             return View();
         }
 
-
-
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
@@ -491,27 +489,18 @@ namespace CEN511_Covid19.Controllers
         public ActionResult DoctorsChoice(int? choice)        
         {
             if (choice == 1) {
-                var recoveredpatients = db.HealthStatus.Where(x => x.RecoveryStatus == true).ToList();
-
-                foreach (var i in recoveredpatients) { 
-                    
-                }
-
-                DoctorUserRelation dr = new DoctorUserRelation
-                {
-
-                };
-
+                var recoveredpatients = db.Symptoms.Where(x => x.RecoveryStatus == true).ToList();
+                
                 return View("RecoveredPatients", recoveredpatients.ToList());
             }
             else if (choice == 2)
             {
-                var symptomspatients = db.HealthStatus.Where(x => x.SuggestedForTest == false).ToList();
+                var symptomspatients = db.Symptoms.Where(x => x.SuggestedForTest == false).ToList();
 
                 return View("SymptomsProvider", symptomspatients.ToList());
             }
             else if (choice == 3) {
-                var resultVerify = db.HealthStatus.Where(x => x.VerificationStatus == false && x.ResultStatus == true).ToList();
+                var resultVerify = db.Symptoms.Where(x => x.VerificationStatus == false && x.ResultStatus == true).ToList();
 
                 return View("VerifyResults", resultVerify.ToList());
             }

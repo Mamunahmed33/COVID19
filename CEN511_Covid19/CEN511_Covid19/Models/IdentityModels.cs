@@ -40,7 +40,7 @@ namespace CEN511_Covid19.Models
 
         public System.Data.Entity.DbSet<CEN511_Covid19.Models.Symptoms> Symptoms { get; set; }
 
-        public System.Data.Entity.DbSet<CEN511_Covid19.Models.HealthStatus> HealthStatus { get; set; }
+        //public System.Data.Entity.DbSet<CEN511_Covid19.Models.HealthStatus> HealthStatus { get; set; }
 
         public System.Data.Entity.DbSet<CEN511_Covid19.Models.Zone> Zones { get; set; }
 

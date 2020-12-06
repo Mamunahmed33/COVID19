@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Suspected";
+}
+
+<h2>Suspected</h2>
+
+
+@using (Html.BeginForm("SuspectedList", "Symptoms", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="name" class="col-lg-4">Phone Number:</label>
+        <div class="col-lg-8">
+            <input type="text" class="form-control" name="name" id="name">
+        </div>
+    </div>
+    
+    <h2> <input type="submit" value="Add Persons as Covid Suspected" class="btn btn-primary"></h2>
+}
+

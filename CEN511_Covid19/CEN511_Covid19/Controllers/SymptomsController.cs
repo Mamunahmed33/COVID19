@@ -46,7 +46,25 @@ namespace CEN511_Covid19.Controllers
         // GET: Symptoms
         public ActionResult Index()
         {
-            return View(db.Symptoms.ToList());
+
+            string userID = User.Identity.GetUserId();
+            List<Symptoms> symp = db.Symptoms.Where(x=>x.UserID == userID).ToList();
+            int l = symp.Count - 1;
+            if (symp[l].SuggestedForTest == false)
+            {
+                ViewBag.comment = "Your COVID Symptoms is provided to Doctor for Suggestions";
+            }
+            else if (symp[l].SuggestedForTest == true && symp[l].ResultStatus == false)
+            {
+                ViewBag.comment = "Doctor suggested for testing. Please update your COVID-19 Test result";
+            }
+
+            else if (symp[l].SuggestedForTest == true && symp[l].ResultStatus == true)
+            {
+                ViewBag.comment = "Doctor suggested for testing. Please take necessary precautions";
+            }
+
+            return View(symp);
         }
 
         // GET: Symptoms/Details/5
@@ -80,8 +98,9 @@ namespace CEN511_Covid19.Controllers
             if (ModelState.IsValid)
             {
                 string userID = User.Identity.GetUserId();
-              //  var u = db.Users.AsNoTracking().FirstOrDefault(user => user.Id == userID);
+                var patientName = db.Users.Find(userID);
                 symptoms.UserID = userID;
+                symptoms.PatientName = patientName.FirstName + " " + patientName.LastName;
                 db.Symptoms.Add(symptoms);
                 db.SaveChanges();
 
@@ -111,7 +130,7 @@ namespace CEN511_Covid19.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SymptomsID,Fever,Cough,ShortnessOfBreathe,Aches,Headache,Ingigestion,StartingDayOfSymptoms")] Symptoms symptoms)
+        public ActionResult Edit([Bind(Include = "SymptomsID,Fever,Cough,ShortnessOfBreathe,Aches,Headache,Ingigestion,StartingDayOfSymptoms, UserID,SuggestedForTest,ResultStatus,VerificationStatus,PatientName,RecoveryStatus")] Symptoms symptoms)
         {
             if (ModelState.IsValid)
             {
@@ -155,6 +174,44 @@ namespace CEN511_Covid19.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult UpdateStatus() 
+        {
+            string v = Request.Form["dropdown"];
+            string i = Request.Form["item.SymptomsID"];
+
+            if (!string.IsNullOrEmpty(v)) {
+                Symptoms s = db.Symptoms.Find(Int32.Parse(i));
+                if(v.Contains("1"))
+                    s.SuggestedForTest = true;
+                else
+                    s.SuggestedForTest = false;
+
+                db.Entry(s).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return View("../Account/Doctors");
+        }
+
+        public ActionResult Suspected() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SuspectedList()
+        {
+            return View("SuspectedList");
+        }
+        public ActionResult Feedback()
+        {
+            return View();
+        }
+        public ActionResult FeedbackList()
+        {
+            return View("FeedbackList");
         }
     }
 }

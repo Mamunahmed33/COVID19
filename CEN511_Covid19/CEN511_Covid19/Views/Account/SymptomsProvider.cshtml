@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CEN511_Covid19.Models.HealthStatus>
+﻿@model IEnumerable<CEN511_Covid19.Models.Symptoms>
 
 @{
     ViewBag.Title = "SymptomsProvider";
@@ -6,11 +6,38 @@
 
 <h2>SymptomsProvider</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fever)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fever)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cough)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortnessOfBreathe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aches)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Headache)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indigestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartingDayOfSymptoms)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.SuggestedForTest)
         </th>
@@ -29,6 +56,33 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fever)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cough)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortnessOfBreathe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aches)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Headache)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indigestion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartingDayOfSymptoms)
+        </td>
+        <td>
+            @Html.HiddenFor(modelItem => item.UserID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.SuggestedForTest)
         </td>
         <td>
@@ -41,9 +95,20 @@
             @Html.DisplayFor(modelItem => item.RecoveryStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HealthStatusID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HealthStatusID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HealthStatusID })
+        <td>
+            @using (Html.BeginForm("UpdateStatus", "Symptoms", FormMethod.Post))
+            {
+                @Html.DropDownList("dropdown", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Suggest For Test", Value = "1"},
+                    new SelectListItem { Text = "No suggestion for Test", Value = "2"}
+                }, "Select Suggestions")
+
+
+                @Html.HiddenFor(modelItem => item.SymptomsID, new { @class = "form-control", id = item.SymptomsID })
+
+                <input type="submit" class="btn btn-primary">
+            }
         </td>
     </tr>
 }

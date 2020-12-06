@@ -13,7 +13,7 @@ namespace CEN511_Covid19.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202012042113391_5"; }
+            get { return "202012060723596_5"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<h2>Feedback</h2>
+
+@using (Html.BeginForm("FeedbackList", "Symptoms", FormMethod.Post))
+{
+    
+    <div class="form-group">
+        <table>
+            <tbody>
+                <label for="name" class="col-lg-2">Enter Feedback:</label>
+                <tr>
+                    <textarea name="message" class="col-lg-8"></textarea>            
+                </tr>
+                <tr>
+                    <h2> <input type="submit" value="Submit" class="btn btn-primary" ></h2>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr/>
+}
+
