@@ -50,20 +50,21 @@ namespace CEN511_Covid19.Controllers
             string userID = User.Identity.GetUserId();
             List<Symptoms> symp = db.Symptoms.Where(x=>x.UserID == userID).ToList();
             int l = symp.Count - 1;
-            if (symp[l].SuggestedForTest == false)
-            {
-                ViewBag.comment = "Your COVID Symptoms is provided to Doctor for Suggestions";
-            }
-            else if (symp[l].SuggestedForTest == true && symp[l].ResultStatus == false)
-            {
-                ViewBag.comment = "Doctor suggested for testing. Please update your COVID-19 Test result";
-            }
+            if (l > 0) { 
+                if (symp[l].SuggestedForTest == false)
+                {
+                    ViewBag.comment = "Your COVID Symptoms is provided to Doctor for Suggestions";
+                }
+                else if (symp[l].SuggestedForTest == true && symp[l].ResultStatus == false)
+                {
+                    ViewBag.comment = "Doctor suggested for testing. Please update your COVID-19 Test result";
+                }
 
-            else if (symp[l].SuggestedForTest == true && symp[l].ResultStatus == true)
-            {
-                ViewBag.comment = "Doctor suggested for testing. Please take necessary precautions";
+                else if (symp[l].SuggestedForTest == true && symp[l].ResultStatus == true)
+                {
+                    ViewBag.comment = "Doctor suggested for testing. Please take necessary precautions";
+                }
             }
-
             return View(symp);
         }
 

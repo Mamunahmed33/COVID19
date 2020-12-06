@@ -90,15 +90,15 @@ namespace CEN511_Covid19.Controllers
                     
                     if (role.Equals("Doctor")) {
 
-                        return View("Doctors");
+                        return RedirectToAction("Doctors");
                     }
                     else if (role.Equals("Registered")) {
 
                         return RedirectToAction("Index", "Symptoms");
                     }
                     else if (role.Equals("Admin")) {
-                       
-                        return View("AllUser", getAll());
+
+                        return RedirectToAction("AllUser");
                     }
 
                     return RedirectToLocal(returnUrl);
@@ -111,6 +111,15 @@ namespace CEN511_Covid19.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        public ActionResult Doctors() {
+            return View("Doctors");
+        }
+
+        public ActionResult AllUser()
+        {
+            return View("AllUser", getAll());
         }
 
         public List<UserType> getAll() {

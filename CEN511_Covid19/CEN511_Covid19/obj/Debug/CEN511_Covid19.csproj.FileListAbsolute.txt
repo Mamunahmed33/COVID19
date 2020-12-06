@@ -56,3 +56,4 @@ C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Co
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.csproj.GenerateResource.Cache
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.dll
 C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.pdb
+C:\Users\Mamun\Desktop\COVID19\CEN511_Covid19\CEN511_Covid19\obj\Debug\CEN511_Covid19.csprojResolveAssemblyReference.cache
