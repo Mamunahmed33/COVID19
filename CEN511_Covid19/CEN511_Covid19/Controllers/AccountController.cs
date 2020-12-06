@@ -346,6 +346,8 @@ namespace CEN511_Covid19.Controllers
             return View();
         }
 
+
+
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
@@ -488,10 +490,17 @@ namespace CEN511_Covid19.Controllers
 
         public ActionResult DoctorsChoice(int? choice)        
         {
-            List<Symptoms> symptoms = db.Symptoms.ToList();
-            List<HealthStatus> healthStatus = db.HealthStatus.ToList();
             if (choice == 1) {
                 var recoveredpatients = db.HealthStatus.Where(x => x.RecoveryStatus == true).ToList();
+
+                foreach (var i in recoveredpatients) { 
+                    
+                }
+
+                DoctorUserRelation dr = new DoctorUserRelation
+                {
+
+                };
 
                 return View("RecoveredPatients", recoveredpatients.ToList());
             }

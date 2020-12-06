@@ -13,6 +13,11 @@ namespace CEN511_Covid19.Controllers
             return View();
         }
 
+        public ActionResult World()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
