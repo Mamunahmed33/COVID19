@@ -1,4 +1,6 @@
 # COVID19-Defender
 This application is developed particularly for Bangladesh to track the COVID-19 infected patients and take necessary precautions.
 
+Covid-19 has become a major global health concern which has been spread worldwide in a very short duration because of its contagious morbific manner. Every continent, every country is fighting with this coronavirus in every possible way of medical treatment along with the following measures to prevent this spread. Bangladesh is a South Asian developing country, and like other countries, people in Bangladesh are being affected by COVID-19 in an increasing amount day by day. A system providing guidelines for testing and helping people to avoid risky places to prevent the contamination can be helpful in these circumstances. Again, having more knowledge about recent statistics of affected and recovered COVID-19 patient can create more awareness of the population. Creating a platform from where individuals can get knowledge about others' experience, ideas regarding COVID-19 can play a significant role for acknowledging people about the severity of the virus and provide more consciousness to handle COVID-19 situation. 
+
 ![plot](./CEN511_Covid19/CEN511_Covid19/img/home.JPG)
